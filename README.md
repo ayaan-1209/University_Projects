@@ -1,1 +1,1 @@
-#A collection of university labs and projects 
+A collection of university labs and projects 
