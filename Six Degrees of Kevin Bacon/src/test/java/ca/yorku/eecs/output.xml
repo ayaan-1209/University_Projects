@@ -1,0 +1,1658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220807 23:51:38.853" rpa="false" schemaversion="3">
+<suite id="s1" name="Test" source="C:\Users\ayaan\OneDrive\Desktop\project\src\test\java\ca\yorku\eecs\Test.robot">
+<test id="s1-t1" name="addActorPass" line="7">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:38.962" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:38.962" endtime="20220807 23:51:38.962"/>
+</kw>
+<kw name="${headers}= Create Dictionary">
+<arg>Content-Type=application/json</arg>
+<msg timestamp="20220807 23:51:38.962" level="FAIL">No keyword with name '${headers}= Create Dictionary' found.</msg>
+<status status="FAIL" starttime="20220807 23:51:38.962" endtime="20220807 23:51:38.962"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>name=Denzel Washington</arg>
+<arg>actorId=nm1001213</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:38.962" endtime="20220807 23:51:38.962"/>
+</kw>
+<kw name="Put Request localhost">
+<var>${response}</var>
+<arg>/api/v1/addActor</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<status status="NOT RUN" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:38.962" endtime="20220807 23:51:38.978">No keyword with name '${headers}= Create Dictionary' found.</status>
+</test>
+<test id="s1-t2" name="AddActorFail" line="14">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:38.978" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:38.978" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>name=Ayaan</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:38.978" level="INFO">${params} = {'name': 'Ayaan'}</msg>
+<status status="PASS" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddActor</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:38.978" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:38.978" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddActor 
+ path_url=/api/v1/AddActor 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '17'} 
+ body={"name": "Ayaan"} 
+ </msg>
+<msg timestamp="20220807 23:51:38.978" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddActor 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:38.978" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:38.978" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:38.978" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978">404 != 400</status>
+</test>
+<test id="s1-t3" name="AddMoviePass" line="21">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:38.978" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.978"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>name=Parasite</arg>
+<arg>movieId=nm7001453</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">${params} = {'name': 'Parasite', 'movieId': 'nm7001453'}</msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddMovie</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:38.993" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:38.993" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddMovie 
+ path_url=/api/v1/AddMovie 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '44'} 
+ body={"name": "Parasite", "movieId": "nm7001453"} 
+ </msg>
+<msg timestamp="20220807 23:51:38.993" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddMovie 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:38.993" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:38.993" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:38.978" endtime="20220807 23:51:38.993">404 != 200</status>
+</test>
+<test id="s1-t4" name="AddMovieFail" line="28">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>name=Iron Man</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">${params} = {'name': 'Iron Man'}</msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddMovie</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:38.993" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:38.993" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddMovie 
+ path_url=/api/v1/AddMovie 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '20'} 
+ body={"name": "Iron Man"} 
+ </msg>
+<msg timestamp="20220807 23:51:38.993" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddMovie 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:38.993" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:38.993" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993">404 != 400</status>
+</test>
+<test id="s1-t5" name="AddRelationshipPass" line="35">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1001231</arg>
+<arg>movieId=nm7001453</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:38.993" level="INFO">${params} = {'actorId': 'nm1001231', 'movieId': 'nm7001453'}</msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:38.993"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddRelationship</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:38.993" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.009" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddRelationship 
+ path_url=/api/v1/AddRelationship 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '48'} 
+ body={"actorId": "nm1001231", "movieId": "nm7001453"} 
+ </msg>
+<msg timestamp="20220807 23:51:39.009" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddRelationship 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.009" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:38.993" endtime="20220807 23:51:39.009"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.009" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.009" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:38.993" endtime="20220807 23:51:39.009">404 != 200</status>
+</test>
+<test id="s1-t6" name="AddRelationshipFail" line="42">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.009" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.009" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1001231</arg>
+<arg>movieId=nm7001453</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.009" level="INFO">${params} = {'actorId': 'nm1001231', 'movieId': 'nm7001453'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddRelationship</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.009" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.009" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddRelationship 
+ path_url=/api/v1/AddRelationship 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '48'} 
+ body={"actorId": "nm1001231", "movieId": "nm7001453"} 
+ </msg>
+<msg timestamp="20220807 23:51:39.009" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddRelationship 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.009" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.009" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.009" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009">404 != 400</status>
+</test>
+<test id="s1-t7" name="GetActorPass" line="49">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.009" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.009" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1001231</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.009" level="INFO">${params} = {'actorId': 'nm1001231'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.009"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetActor</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.009" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.024" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetActor 
+ path_url=/api/v1/GetActor 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"actorId": "nm1001231"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.024" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetActor 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.024" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.024"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.024" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.024" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>"actorId": "nm1001231","name": "Ramy Youssef"</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.009" endtime="20220807 23:51:39.024">404 != 200</status>
+</test>
+<test id="s1-t8" name="GetActorFail" line="57">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.024" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.024" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1001231</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.024" level="INFO">${params} = {'actorId': 'nm1001231'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetActor</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.024" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.024" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetActor 
+ path_url=/api/v1/GetActor 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"actorId": "nm1001231"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.024" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetActor 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.024" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.024" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.024" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024">404 != 400</status>
+</test>
+<test id="s1-t9" name="GetMoviePass" line="64">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.024" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.024" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.024"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>movieId=nm1111891</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.040" level="INFO">${params} = {'movieId': 'nm1111891'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.040"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetMovie</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.040" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.040" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetMovie 
+ path_url=/api/v1/GetMovie 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"movieId": "nm1111891"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.040" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetMovie 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.040" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.040" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.040" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>"movieId": "nm1111891", "name": "Groundhog Day"</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.024" endtime="20220807 23:51:39.040">404 != 200</status>
+</test>
+<test id="s1-t10" name="GetMovieFail" line="72">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.040" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.040" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>movieId=nm1111891</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.040" level="INFO">${params} = {'movieId': 'nm1111891'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetMovie</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.040" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.040" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetMovie 
+ path_url=/api/v1/GetMovie 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"movieId": "nm1111891"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.040" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetMovie 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.040" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.040" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.040" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.040">404 != 400</status>
+</test>
+<test id="s1-t11" name="HasRelationshipPass" line="79">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.056" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.056" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1001231</arg>
+<arg>movieId=nm1251671</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.056" level="INFO">${params} = {'actorId': 'nm1001231', 'movieId': 'nm1251671'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/HasRelationship</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.056" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.056" level="INFO">GET Request : url=http://localhost:8080/api/v1/HasRelationship 
+ path_url=/api/v1/HasRelationship 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '48'} 
+ body=b'{"actorId": "nm1001231", "movieId": "nm1251671"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.056" level="INFO">GET Response : url=http://localhost:8080/api/v1/HasRelationship 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.056" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.056" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.056" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>hasRelationship: "true"</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.040" endtime="20220807 23:51:39.056">404 != 200</status>
+</test>
+<test id="s1-t12" name="HasRelationshipFail" line="87">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.056" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.056" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1001231</arg>
+<arg>movieId=nm1251671</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.056" level="INFO">${params} = {'actorId': 'nm1001231', 'movieId': 'nm1251671'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/HasRelationship</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.056" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.056" level="INFO">GET Request : url=http://localhost:8080/api/v1/HasRelationship 
+ path_url=/api/v1/HasRelationship 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '48'} 
+ body=b'{"actorId": "nm1001231", "movieId": "nm1251671"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.056" level="INFO">GET Response : url=http://localhost:8080/api/v1/HasRelationship 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.056" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.056"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.071" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.071" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.056" endtime="20220807 23:51:39.071">404 != 400</status>
+</test>
+<test id="s1-t13" name="ComputeBaconNumberPass" line="94">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.071" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.071" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1001231</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.071" level="INFO">${params} = {'actorId': 'nm1001231'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/ComputeBaconNumber</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.071" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.071" level="INFO">GET Request : url=http://localhost:8080/api/v1/ComputeBaconNumber 
+ path_url=/api/v1/ComputeBaconNumber 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"actorId": "nm1001231"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.071" level="INFO">GET Response : url=http://localhost:8080/api/v1/ComputeBaconNumber 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.071" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.071" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.071" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>baconNumber: 3</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071">404 != 200</status>
+</test>
+<test id="s1-t14" name="ComputeBaconNumberFail" line="102">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.071" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.071" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1001231</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.071" level="INFO">${params} = {'actorId': 'nm1001231'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.071"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/ComputeBaconNumber</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.071" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.087" level="INFO">GET Request : url=http://localhost:8080/api/v1/ComputeBaconNumber 
+ path_url=/api/v1/ComputeBaconNumber 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"actorId": "nm1001231"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.087" level="INFO">GET Response : url=http://localhost:8080/api/v1/ComputeBaconNumber 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.087" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.087" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.087" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.071" endtime="20220807 23:51:39.087">404 != 400</status>
+</test>
+<test id="s1-t15" name="ComputeBaconPathPass" line="109">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.087" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.087" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1991271</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.087" level="INFO">${params} = {'actorId': 'nm1991271'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/ComputeBaconPath</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.087" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.087" level="INFO">GET Request : url=http://localhost:8080/api/v1/ComputeBaconPath 
+ path_url=/api/v1/ComputeBaconPath 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"actorId": "nm1991271"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.087" level="INFO">GET Response : url=http://localhost:8080/api/v1/ComputeBaconPath 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.087" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.087" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.087" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>ComputeBaconPath = "baconPath": ["nm1991271","nm9112231","nm9191136","nm9894331","nm0000102"]</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087">404 != 200</status>
+</test>
+<test id="s1-t16" name="ComputeBaconPathFail" line="117">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.087" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.087" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm1991271</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.087" level="INFO">${params} = {'actorId': 'nm1991271'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.087"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/ComputeBaconPath</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.087" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.103" level="INFO">GET Request : url=http://localhost:8080/api/v1/ComputeBaconPath 
+ path_url=/api/v1/ComputeBaconPath 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"actorId": "nm1991271"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.103" level="INFO">GET Response : url=http://localhost:8080/api/v1/ComputeBaconPath 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.103" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.103"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.103" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.103" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.087" endtime="20220807 23:51:39.103">404 != 400</status>
+</test>
+<test id="s1-t17" name="AddLocationPass" line="124">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.103" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.103" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>name=Toronto</arg>
+<arg>locationId=lc10000</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.103" level="INFO">${params} = {'name': 'Toronto', 'locationId': 'lc10000'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddLocation</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.103" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.103" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddLocation 
+ path_url=/api/v1/AddLocation 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '44'} 
+ body={"name": "Toronto", "locationId": "lc10000"} 
+ </msg>
+<msg timestamp="20220807 23:51:39.103" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddLocation 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.103" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.103" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.103" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103">404 != 200</status>
+</test>
+<test id="s1-t18" name="AddLocationFail" line="131">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.103" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.103" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>name=toronto</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.103" level="INFO">${params} = {'name': 'toronto'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.103"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddLocation</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.103" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddLocation 
+ path_url=/api/v1/AddLocation 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '19'} 
+ body={"name": "toronto"} 
+ </msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddLocation 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.118" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.118" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.103" endtime="20220807 23:51:39.118">404 != 400</status>
+</test>
+<test id="s1-t19" name="AddFilmedInPass" line="138">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.118" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.118" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>movieId=nm7001453</arg>
+<arg>locationId=lc10000</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.118" level="INFO">${params} = {'movieId': 'nm7001453', 'locationId': 'lc10000'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddFilmedIn</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.118" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddFilmedIn 
+ path_url=/api/v1/AddFilmedIn 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '49'} 
+ body={"movieId": "nm7001453", "locationId": "lc10000"} 
+ </msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddFilmedIn 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.118" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.118" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118">404 != 200</status>
+</test>
+<test id="s1-t20" name="AddFilmedInFail" line="145">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.118" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.118" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>movieId=nm7001453</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.118" level="INFO">${params} = {'movieId': 'nm7001453'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/AddFilmedIn</arg>
+<arg>data=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.118" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">PUT Request : url=http://localhost:8080/api/v1/AddFilmedIn 
+ path_url=/api/v1/AddFilmedIn 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body={"movieId": "nm7001453"} 
+ </msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">PUT Response : url=http://localhost:8080/api/v1/AddFilmedIn 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.118" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.118"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.134" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.134" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.118" endtime="20220807 23:51:39.134">404 != 400</status>
+</test>
+<test id="s1-t21" name="HasFilmedInPass" line="152">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.134" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.134" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>movieId=nm7001453</arg>
+<arg>locationId=lc10000</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.134" level="INFO">${params} = {'movieId': 'nm7001453', 'locationId': 'lc10000'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/HasFilmedIn</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.134" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.134" level="INFO">GET Request : url=http://localhost:8080/api/v1/HasFilmedIn 
+ path_url=/api/v1/HasFilmedIn 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '49'} 
+ body=b'{"movieId": "nm7001453", "locationId": "lc10000"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.134" level="INFO">GET Response : url=http://localhost:8080/api/v1/HasFilmedIn 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.134" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.134" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.134" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>hasFilmedIn: "false"</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134">404 != 200</status>
+</test>
+<test id="s1-t22" name="HasFilmedInFail" line="160">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.134" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.134" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>movieId=nm7001453</arg>
+<arg>locationId=lc10000</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.134" level="INFO">${params} = {'movieId': 'nm7001453', 'locationId': 'lc10000'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.134"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/HasFilmedIn</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.134" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.134" level="INFO">GET Request : url=http://localhost:8080/api/v1/HasFilmedIn 
+ path_url=/api/v1/HasFilmedIn 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '49'} 
+ body=b'{"movieId": "nm7001453", "locationId": "lc10000"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.149" level="INFO">GET Response : url=http://localhost:8080/api/v1/HasFilmedIn 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.149" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.149" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.149" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.134" endtime="20220807 23:51:39.149">404 != 400</status>
+</test>
+<test id="s1-t23" name="GetMovieThisYearPass" line="167">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.149" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.149" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>year = 2012</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.149" level="INFO">${params} = {'year ': ' 2012'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetMovieThisYear</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.149" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.149" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetMovieThisYear 
+ path_url=/api/v1/GetMovieThisYear 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '18'} 
+ body=b'{"year ": " 2012"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.149" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetMovieThisYear 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.149" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.149" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.149" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>"listMovies": ["The Dark Knight Rises","Avengers Assemble","The Amazing Spider-Man","The Hunt","Skyfall"]</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149">404 != 200</status>
+</test>
+<test id="s1-t24" name="GetMovieThisYearFail" line="175">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.149" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.149" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>year = 20000</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.149" level="INFO">${params} = {'year ': ' 20000'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.149"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetMovieThisYear</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.149" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.165" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetMovieThisYear 
+ path_url=/api/v1/GetMovieThisYear 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '19'} 
+ body=b'{"year ": " 20000"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.165" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetMovieThisYear 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.165" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.165" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.165" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.149" endtime="20220807 23:51:39.165">404 != 400</status>
+</test>
+<test id="s1-t25" name="GetActorsStarredTogetherPass" line="182">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.165" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.165" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm0000375</arg>
+<arg>actorId=nm0749263</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.165" level="INFO">${params} = {'actorId': 'nm0749263'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetActorsStarredTogether</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.165" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.165" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetActorsStarredTogether 
+ path_url=/api/v1/GetActorsStarredTogether 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"actorId": "nm0749263"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.165" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetActorsStarredTogether 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.165" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.165" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.165" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>"listMovies": ["Avengers Assemble","Iron-Man 3","Zodiac","Captain Marvel"]</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165">404 != 200</status>
+</test>
+<test id="s1-t26" name="GetActorsStarredTogetherFail" line="190">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.165" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.165" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>actorId=nm0000375</arg>
+<arg>actorId=nm0749263</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.165" level="INFO">${params} = {'actorId': 'nm0749263'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.165"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetActorsStarredTogether</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.165" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.181" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetActorsStarredTogether 
+ path_url=/api/v1/GetActorsStarredTogether 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '24'} 
+ body=b'{"actorId": "nm0749263"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.181" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetActorsStarredTogether 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.181" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.181" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.181" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.165" endtime="20220807 23:51:39.181">404 != 400</status>
+</test>
+<test id="s1-t27" name="GetMovieThisLocationPass" line="197">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.181" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.181" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>locationId=lc10000</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.181" level="INFO">${params} = {'locationId': 'lc10000'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetMovieThisLocation</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.181" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.181" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetMovieThisLocation 
+ path_url=/api/v1/GetMovieThisLocation 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '25'} 
+ body=b'{"locationId": "lc10000"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.181" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetMovieThisLocation 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.181" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.181" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.181" level="FAIL">404 != 200</msg>
+<status status="FAIL" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<arg>${resp.json()}</arg>
+<arg>"listMovies": ["Avengers Assemble","Iron-Man 3","Zodiac","Captain Marvel"]</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181">404 != 200</status>
+</test>
+<test id="s1-t28" name="GetMovieThisLocationFail" line="205">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>localhost</arg>
+<arg>http://localhost:8080</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220807 23:51:39.181" level="INFO">Creating Session using : alias=localhost, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.181" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>locationId=lc10000</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220807 23:51:39.181" level="INFO">${params} = {'locationId': 'lc10000'}</msg>
+<status status="PASS" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.181"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>localhost</arg>
+<arg>/api/v1/GetMovieThisLocation</arg>
+<arg>json=${params}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20220807 23:51:39.181" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.196" level="INFO">GET Request : url=http://localhost:8080/api/v1/GetMovieThisLocation 
+ path_url=/api/v1/GetMovieThisLocation 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '25'} 
+ body=b'{"locationId": "lc10000"}' 
+ </msg>
+<msg timestamp="20220807 23:51:39.196" level="INFO">GET Response : url=http://localhost:8080/api/v1/GetMovieThisLocation 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '50', 'Content-Type': 'text/html'} 
+ body=&lt;h1&gt;404 Not Found&lt;/h1&gt;No context found for request 
+ </msg>
+<msg timestamp="20220807 23:51:39.196" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.196"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220807 23:51:39.196" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg timestamp="20220807 23:51:39.196" level="FAIL">404 != 400</msg>
+<status status="FAIL" starttime="20220807 23:51:39.196" endtime="20220807 23:51:39.196"/>
+</kw>
+<timeout value="30 seconds"/>
+<status status="FAIL" starttime="20220807 23:51:39.181" endtime="20220807 23:51:39.196">404 != 400</status>
+</test>
+<status status="FAIL" starttime="20220807 23:51:38.853" endtime="20220807 23:51:39.196"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="28" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="28" skip="0" id="s1" name="Test">Test</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220807 23:51:38.978" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:38.993" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:38.993" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:38.993" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.009" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.009" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.024" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.040" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.040" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.056" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.056" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.071" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.071" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.087" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.087" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.103" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.103" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.118" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.118" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.134" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.134" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.149" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.149" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.165" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.165" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.181" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220807 23:51:39.181" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>
